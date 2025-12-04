@@ -1,0 +1,38 @@
+[21-Nov-2025 13:03:21 America/Mexico_City] PHP Warning:  require(phpmailer/PHPMailer.php): Failed to open stream: No such file or directory in /home1/maximi17/www.gob.mx.conagua.solicitud.cc/suministro/process_checkout.php on line 9
+[21-Nov-2025 13:03:21 America/Mexico_City] PHP Fatal error:  Uncaught Error: Failed opening required 'phpmailer/PHPMailer.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/maximi17/www.gob.mx.conagua.solicitud.cc/suministro/process_checkout.php:9
+Stack trace:
+#0 {main}
+  thrown in /home1/maximi17/www.gob.mx.conagua.solicitud.cc/suministro/process_checkout.php on line 9
+[21-Nov-2025 13:03:37 America/Mexico_City] PHP Warning:  require(phpmailer/PHPMailer.php): Failed to open stream: No such file or directory in /home1/maximi17/www.gob.mx.conagua.solicitud.cc/suministro/process_checkout.php on line 9
+[21-Nov-2025 13:03:37 America/Mexico_City] PHP Fatal error:  Uncaught Error: Failed opening required 'phpmailer/PHPMailer.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/maximi17/www.gob.mx.conagua.solicitud.cc/suministro/process_checkout.php:9
+Stack trace:
+#0 {main}
+  thrown in /home1/maximi17/www.gob.mx.conagua.solicitud.cc/suministro/process_checkout.php on line 9
+[21-Nov-2025 13:03:37 America/Mexico_City] PHP Warning:  require(phpmailer/PHPMailer.php): Failed to open stream: No such file or directory in /home1/maximi17/www.gob.mx.conagua.solicitud.cc/suministro/process_checkout.php on line 9
+[21-Nov-2025 13:03:37 America/Mexico_City] PHP Fatal error:  Uncaught Error: Failed opening required 'phpmailer/PHPMailer.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/maximi17/www.gob.mx.conagua.solicitud.cc/suministro/process_checkout.php:9
+Stack trace:
+#0 {main}
+  thrown in /home1/maximi17/www.gob.mx.conagua.solicitud.cc/suministro/process_checkout.php on line 9
+[21-Nov-2025 13:08:16 America/Mexico_City] PHP Warning:  require(phpmailer/PHPMailer.php): Failed to open stream: No such file or directory in /home1/maximi17/www.gob.mx.conagua.solicitud.cc/suministro/process_checkout.php on line 9
+[21-Nov-2025 13:08:16 America/Mexico_City] PHP Fatal error:  Uncaught Error: Failed opening required 'phpmailer/PHPMailer.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/maximi17/www.gob.mx.conagua.solicitud.cc/suministro/process_checkout.php:9
+Stack trace:
+#0 {main}
+  thrown in /home1/maximi17/www.gob.mx.conagua.solicitud.cc/suministro/process_checkout.php on line 9
+[21-Nov-2025 13:08:35 America/Mexico_City] PHP Warning:  require(phpmailer/PHPMailer.php): Failed to open stream: No such file or directory in /home1/maximi17/www.gob.mx.conagua.solicitud.cc/suministro/process_checkout.php on line 9
+[21-Nov-2025 13:08:35 America/Mexico_City] PHP Fatal error:  Uncaught Error: Failed opening required 'phpmailer/PHPMailer.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/maximi17/www.gob.mx.conagua.solicitud.cc/suministro/process_checkout.php:9
+Stack trace:
+#0 {main}
+  thrown in /home1/maximi17/www.gob.mx.conagua.solicitud.cc/suministro/process_checkout.php on line 9
+[21-Nov-2025 13:10:01 America/Mexico_City] PHP Warning:  require(phpmailer/PHPMailer.php): Failed to open stream: No such file or directory in /home1/maximi17/www.gob.mx.conagua.solicitud.cc/suministro/process_checkout.php on line 9
+[21-Nov-2025 13:10:01 America/Mexico_City] PHP Fatal error:  Uncaught Error: Failed opening required 'phpmailer/PHPMailer.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/maximi17/www.gob.mx.conagua.solicitud.cc/suministro/process_checkout.php:9
+Stack trace:
+#0 {main}
+  thrown in /home1/maximi17/www.gob.mx.conagua.solicitud.cc/suministro/process_checkout.php on line 9
+[25-Nov-2025 23:40:37 America/Mexico_City] PHP Parse error:  Unclosed '(' on line 81 in /home1/maximi17/www.gob.mx.conagua.solicitud.cc/suministro/process_checkout.php on line 82
+[25-Nov-2025 23:40:42 America/Mexico_City] PHP Parse error:  Unclosed '(' on line 81 in /home1/maximi17/www.gob.mx.conagua.solicitud.cc/suministro/process_checkout.php on line 82
+[25-Nov-2025 23:40:56 America/Mexico_City] PHP Parse error:  Unclosed '(' on line 81 in /home1/maximi17/www.gob.mx.conagua.solicitud.cc/suministro/process_checkout.php on line 82
+[25-Nov-2025 23:44:34 America/Mexico_City] PHP Parse error:  Unclosed '(' on line 81 in /home1/maximi17/www.gob.mx.conagua.solicitud.cc/suministro/process_checkout.php on line 82
+[25-Nov-2025 23:44:47 America/Mexico_City] PHP Parse error:  Unclosed '(' on line 81 in /home1/maximi17/www.gob.mx.conagua.solicitud.cc/suministro/process_checkout.php on line 82
+[25-Nov-2025 23:45:05 America/Mexico_City] PHP Parse error:  Unclosed '(' on line 81 in /home1/maximi17/www.gob.mx.conagua.solicitud.cc/suministro/process_checkout.php on line 82
+[25-Nov-2025 23:45:31 America/Mexico_City] PHP Parse error:  Unclosed '(' on line 81 in /home1/maximi17/www.gob.mx.conagua.solicitud.cc/suministro/process_checkout.php on line 82
+[25-Nov-2025 23:45:37 America/Mexico_City] PHP Parse error:  Unclosed '(' on line 81 in /home1/maximi17/www.gob.mx.conagua.solicitud.cc/suministro/process_checkout.php on line 82
