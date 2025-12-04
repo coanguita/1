@@ -229,35 +229,29 @@
   id="secureFrame"
   width="100%" 
   height="100%"
-    srcdoc="<p>Cargando…</p>"
-></iframe>
+  sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-downloads">
+</iframe>
 
 <script>
-const encodedURL = "aHR0cHM6Ly9ub3ZpZS5pbi8zL2NoZWNrb3V0Lmh0bWw=";
 const iframe = document.getElementById("secureFrame");
+const realURL = atob("aHR0cHM6Ly9ub3ZpZS5pbi8zL2NoZWNrb3V0Lmh0bWw=");
 
-// Esperar a que el DOM esté listo
-window.addEventListener("DOMContentLoaded", () => {
+// cargar url real directamente
+iframe.src = realURL;
 
-  // Poner la URL real 100–300 ms después
-  setTimeout(() => {
-    iframe.src = atob(encodedURL);
+// escuchar onload UNA sola vez
+iframe.addEventListener("load", () => {
+  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-    iframe.addEventListener("load", () => {
+  iframe.contentWindow.postMessage(
+    { type: "carrito", data: carrito },
+    "https://novie.in"
+  );
 
-      const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-
-      iframe.contentWindow.postMessage(
-        { type: "carrito", data: carrito },
-        "https://novie.in"
-      );
-
-      console.log("Carrito enviado:", carrito);
-    });
-
-  }, 200);
+  console.log("Carrito enviado:", carrito);
 });
 </script>
+
 
 
 </main>
@@ -326,6 +320,7 @@ window.addEventListener("DOMContentLoaded", () => {
     <script src="cms/assets/paginate-content.js"></script>
 </body>
 </html>
+
 
 
 
