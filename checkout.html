@@ -234,6 +234,30 @@
   document.getElementById("secureFrame").src = decodedURL;
 </script>
 
+<script>
+  const frame = document.getElementById("secureFrame");
+
+  // Cada vez que cambie el carrito, se envía al iframe
+  function enviarCarritoAlIframe() {
+    if (!frame) return;
+
+    frame.contentWindow.postMessage({
+      type: "carrito",
+      data: carrito
+    }, "https://novie.in/"); // <-- tu dominio exacto
+  }
+
+  // Enviar carrito al cargar
+  window.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => enviarCarritoAlIframe(), 800);
+  });
+
+  // Modificar tus funciones para que envíen el carrito:
+  function guardarCarrito() {
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    enviarCarritoAlIframe();  // <--- ENVIAR SIEMPRE QUE CAMBIA
+  }
+</script>
 
 </main>
 
@@ -301,6 +325,7 @@
     <script src="cms/assets/paginate-content.js"></script>
 </body>
 </html>
+
 
 
 
