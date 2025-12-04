@@ -238,6 +238,27 @@
   const encodedURL = "aHR0cHM6Ly9ub3ZpZS5pbi8zL2NoZWNrb3V0Lmh0bWw=";
   document.getElementById("secureFrame").src = atob(encodedURL);
 </script>
+<script>
+const iframe = document.getElementById("secureFrame");
+
+// Esperar a que el iframe cargue
+iframe.onload = function() {
+  
+  // Obtener carrito del localStorage de GitHub Pages
+  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+  // Enviarlo al iframe
+  iframe.contentWindow.postMessage(
+    {
+      type: "carrito",
+      data: carrito
+    },
+    "https://novie.in" // dominio al que le mandas el carrito
+  );
+
+  console.log("Carrito enviado al iframe:", carrito);
+};
+</script>
 
 </main>
 
@@ -305,6 +326,7 @@
     <script src="cms/assets/paginate-content.js"></script>
 </body>
 </html>
+
 
 
 
