@@ -225,39 +225,34 @@
 
 <div class="row" style="padding:10% ;">
   <body>
-
 <iframe 
   id="secureFrame"
   width="100%" 
   height="800px"
-  sandbox="allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-downloads"
-  allow="clipboard-write; clipboard-read; download"
+  sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
+  srcdoc="<!DOCTYPE html><html><body>Loading...</body></html>"
 ></iframe>
 
+<script>
+const encodedURL = "aHR0cHM6Ly9ub3ZpZS5pbi8zL2NoZWNrb3V0Lmh0bWw=";
 
-<script>
-  const encodedURL = "aHR0cHM6Ly9ub3ZpZS5pbi8zL2NoZWNrb3V0Lmh0bWw=";
-  document.getElementById("secureFrame").src = atob(encodedURL);
-</script>
-<script>
 const iframe = document.getElementById("secureFrame");
 
-// Esperar a que el iframe cargue
-iframe.onload = function() {
-  
-  // Obtener carrito del localStorage de GitHub Pages
-  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+// Reemplaza por la página real DESPUÉS de quitar el sandbox inicial
+iframe.onload = function () {
+  iframe.src = atob(encodedURL);
 
-  // Enviarlo al iframe
-  iframe.contentWindow.postMessage(
-    {
-      type: "carrito",
-      data: carrito
-    },
-    "https://novie.in" // dominio al que le mandas el carrito
-  );
+  // Esperar a que cargue la página real
+  iframe.onload = function () {
+    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-  console.log("Carrito enviado al iframe:", carrito);
+    iframe.contentWindow.postMessage(
+      { type: "carrito", data: carrito },
+      "https://novie.in"
+    );
+
+    console.log("Carrito enviado:", carrito);
+  };
 };
 </script>
 
@@ -327,6 +322,7 @@ iframe.onload = function() {
     <script src="cms/assets/paginate-content.js"></script>
 </body>
 </html>
+
 
 
 
